@@ -17,7 +17,6 @@ button.onclick=function(){
 };
 
 var submit=document.getElementById('submit_btn');
-
 submit.onclick=function(){
     var request=new XMLHttpRequest();
     request.onreadystatechange=function(){
@@ -42,4 +41,27 @@ submit.onclick=function(){
     request.open('GET','http://hetal93hasmukh.imad.hasura-app.io/submit-name?name='+name1,true);
     request.send(null);
   
+};
+
+var submitCmt=document.getElementById('submit-comment');
+submitCmt.onclick=function(){
+    var req=new XMLHttpRequest();
+    req.onreadystatechange=function(){
+        if(req.status==200)
+        {
+            var comments=req.responseText;
+            comments=JSON.parse(comments);
+            var cmtlist='';
+            for(var j=0;j<comments.length;j++)
+            {
+                cmtlist+='<i>'+comments[j]+'</i>';
+            }
+            var span=document.getElementById('cmt');
+            span.innerHTML=cmtlist;
+        }
+    };
+    var commentInput=document.getElementById('comment');
+    var commentValue=commentInput.value;
+    req.open('GET','http://hetal93hasmukh.imad.hasura-app.io/submit-comment?comment='+commentValue,true);
+    req.send(null);
 };
