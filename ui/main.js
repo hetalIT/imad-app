@@ -20,17 +20,19 @@ var submitCmt=document.getElementById('submit-comment');
 submitCmt.onclick=function(){
     var request=new XMLHttpRequest();
     request.onreadystatechange=function(){
-        if(request.status==200)
-        {
-            var comments=request.responseText;
-            comments=JSON.parse(comments);
-            var cmtlist='';
-            for(var j=0;j<comments.length;j++)
+        if(request.readyState==XMLHttpRequest.DONE){
+            if(request.status==200)
             {
-                cmtlist+='<i>'+comments[j]+'</i>';
+                var comments=request.responseText;
+                comments=JSON.parse(comments);
+                var cmtlist='';
+                for(var j=0;j<comments.length;j++)
+                {
+                    cmtlist+='<i>'+comments[j]+'</i>';
+                }
+                var span=document.getElementById('cmt');
+                span.innerHTML=cmtlist;
             }
-            var span=document.getElementById('cmt');
-            span.innerHTML=cmtlist;
         }
     };
     var commentInput=document.getElementById('comment');
