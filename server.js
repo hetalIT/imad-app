@@ -81,6 +81,12 @@ app.get('/counter',function(req,res){
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
+var comments=[];
+app.get('/submit-comment',function(req,res){
+    var comment=req.query.name;
+    comments.push(comment);
+    res.send(JSON.stringify(comments));
+});
 
 var names=[];
 app.get('/submit-name',function(req,res){
@@ -90,12 +96,6 @@ app.get('/submit-name',function(req,res){
     res.send(JSON.stringify(names));
 });
 
-var comments=[];
-app.get('/submit-comment',function(req,res){
-    var comment=req.query.name;
-    comments.push(comment);
-    res.send(JSON.stringify(comments));
-});
 
 app.get('/:articleName',function(req,res){
     var articleName=req.params.articleName;
