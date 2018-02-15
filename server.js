@@ -72,6 +72,13 @@ function createTemplate(data){
      `;
      return htmlTemplate;
 }
+var comments=[];
+app.get('/submit-comment',function(req,res){
+    var comment=req.query.name;
+    comments.push(comment);
+    res.send(JSON.stringify(comments));
+});
+
 var counter=0;
 app.get('/counter',function(req,res){
     counter=counter+1;
