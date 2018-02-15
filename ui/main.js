@@ -20,7 +20,7 @@ var submitCmt=document.getElementById('submit-comment');
 submitCmt.onclick=function(){
     var request=new XMLHttpRequest();
     request.onreadystatechange=function(){
-        if(requ.status==200)
+        if(request.status==200)
         {
             var comments=request.responseText;
             comments=JSON.parse(comments);
