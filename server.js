@@ -1,7 +1,7 @@
 var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
-var pool=require('pg').Pool;
+var Pool=require('pg').Pool;
 var app = express();
 //var crypto=require('crypto');
 app.use(morgan('combined'));
@@ -142,7 +142,7 @@ app.get('/hash/:input',function(req,res){
     res.send(hashedString);
 })*/
 
-/*var config={
+var config={
     user:'hetal93hasmukh',
     database:'hetal93hasmukh',
     host:'db.imad.hasura-app.io',
@@ -160,7 +160,7 @@ app.get('/test_db',function(req,res){
          res.send(JSON.stringify(result));  
        }
    }); 
-});*/
+});
 
 
 
