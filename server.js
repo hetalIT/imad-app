@@ -13,7 +13,7 @@ var config={
 };
 app.use(morgan('combined'));
 
-/*var articles={
+var articles={
     'article-one':{
         title:'Article one : Hetal Patel',
         heading:'Article One',
@@ -47,7 +47,7 @@ app.use(morgan('combined'));
                 <p>
                     This is the content for my Third article.
                 </p>`}
-};*/
+};
 function createTemplate(data){
     var title=data.title;
     var date=data.date;
