@@ -1,8 +1,9 @@
 var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
-var pool=require('pg').pool;
+var pool=require('pg').Pool;
 var app = express();
+//var crypto=require('crypto');
 app.use(morgan('combined'));
 
 var articles={
@@ -132,6 +133,15 @@ app.get('/ui/main.js', function (req, res) {
 app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
 });
+
+/*function hash(input){
+    var hashed=crypto.pbkdf2Sync();
+}
+app.get('/hash/:input',function(req,res){
+    var hashedString=hash(req.params.input);
+    res.send(hashedString);
+})*/
+
 var config={
     user:'hetal93hasmukh',
     database:'hetal93hasmukh',
