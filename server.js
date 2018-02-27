@@ -13,7 +13,7 @@ var config={
 };
 app.use(morgan('combined'));
 
-var articles={
+/*var articles={
     'article-one':{
         title:'Article one : Hetal Patel',
         heading:'Article One',
@@ -47,7 +47,7 @@ var articles={
                 <p>
                     This is the content for my Third article.
                 </p>`}
-};
+};*/
 function createTemplate(data){
     var title=data.title;
     var date=data.date;
@@ -90,20 +90,6 @@ app.get('/counter',function(req,res){
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
-var comments=[];
-app.get('/submit-comment',function(req,res){
-    var comment=req.query.name;
-    comments.push(comment);
-    res.send(JSON.stringify(comments));
-});
-
-var names=[];
-app.get('/submit-name',function(req,res){
-    var name=req.query.name;
-    
-    names.push(name);
-    res.send(JSON.stringify(names));
-});
 
 var pool=new Pool(config);
 app.get('/articles/:articleName',function(req,res){
@@ -127,6 +113,22 @@ app.get('/articles/:articleName',function(req,res){
    });
    
 });
+
+var comments=[];
+app.get('/submit-comment',function(req,res){
+    var comment=req.query.name;
+    comments.push(comment);
+    res.send(JSON.stringify(comments));
+});
+
+var names=[];
+app.get('/submit-name',function(req,res){
+    var name=req.query.name;
+    
+    names.push(name);
+    res.send(JSON.stringify(names));
+});
+
 
 
 app.get('/ui/style.css', function (req, res) {
