@@ -156,7 +156,7 @@ function hash(input,salt){
 app.get('/hash/:input',function(req,res){
     var hashedString=hash(req.params.input,'this-is-some-random-string');
     res.send(hashedString);
-})
+});
 
 app.post('/create-user',function(req,res){
     var username=req.body.username;
@@ -172,7 +172,7 @@ app.post('/create-user',function(req,res){
        }   
     });
     
-})
+});
 
 app.post('/login',function(req,res){
   var username=req.body.username;
@@ -202,7 +202,7 @@ app.post('/login',function(req,res){
         }
     }   
     });  
-})
+});
 
 app.get('/check-login',function(req,res){
     if(req.session && req.session.auth && req.session.auth.userId){
@@ -212,7 +212,12 @@ app.get('/check-login',function(req,res){
     {
         res.send('You are not logged in');
     }
-})
+});
+
+app.get('/logout',function(req,res){
+    delete req.session.auth;
+    res.send('You logged out');
+});
 /*var pool=new Pool(config);
 app.get('/test_db',function(req,res){
    pool.query('SELECT * FROM test',function(err,result){
